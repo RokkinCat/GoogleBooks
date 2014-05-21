@@ -4,6 +4,8 @@ module GoogleBooks
   class Response
     include Enumerable
 
+    attr_reader :response
+
     def initialize(response)
       @response = response
     end
@@ -16,7 +18,7 @@ module GoogleBooks
         block.call(Item.new(item))
       end
     end
-    
+
     # Total items returnable based on query, not total items in response
     # (which is throttled by maxResults)
     def total_items
